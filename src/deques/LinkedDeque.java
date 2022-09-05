@@ -1,30 +1,47 @@
 package deques;
 
 /**
+ * A doubly-linked implementation of the {@link Deque} interface.
+ *
  * @see Deque
  */
 public class LinkedDeque<T> implements Deque<T> {
+    /**
+     * The sentinel node representing the front of this deque.
+     */
     private Node<T> front;
+    /**
+     * The sentinel node representing the back of this deque.
+     */
     private Node<T> back;
+    /**
+     * The number of elements in this deque.
+     */
     private int size;
 
+    /**
+     * Constructs an empty deque.
+     */
     public LinkedDeque() {
         size = 0;
         // TODO: Replace with your code
     }
 
+    @Override
     public void addFirst(T item) {
         size += 1;
         // TODO: Replace with your code
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    @Override
     public void addLast(T item) {
         size += 1;
         // TODO: Replace with your code
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -34,6 +51,7 @@ public class LinkedDeque<T> implements Deque<T> {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -43,6 +61,7 @@ public class LinkedDeque<T> implements Deque<T> {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    @Override
     public T get(int index) {
         if ((index >= size) || (index < 0)) {
             return null;
@@ -51,10 +70,17 @@ public class LinkedDeque<T> implements Deque<T> {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Returns null if the front and back nodes form a valid linked deque. Otherwise, returns a
+     * string describing the error.
+     *
+     * @return null if this deque is valid, or a description of the error
+     */
     private String checkInvariants() {
         if (front == null) {
             return "Unexpected reference: front should reference a sentinel node but was <null>";
@@ -80,6 +106,14 @@ public class LinkedDeque<T> implements Deque<T> {
         return null;
     }
 
+    /**
+     * Returns null if the current node is valid with correct references in both directions.
+     * Otherwise, returns a string describing the error.
+     *
+     * @param node the node to validate
+     * @param i the index of the node in this deque
+     * @return null if this node is valid, or a description of the error
+     */
     private String checkNode(Node<T> node, int i) {
         if (node.next == null) {
             return "Unexpected null reference in node at index " + i + ": <" + node + ">";
@@ -94,15 +128,41 @@ public class LinkedDeque<T> implements Deque<T> {
         }
     }
 
+    /**
+     * A doubly-linked node containing a single element.
+     *
+     * @param <T> the type of element in this node
+     */
     private static class Node<T> {
+        /**
+         * The element data value.
+         */
         public final T value;
+        /**
+         * The previous node in the deque.
+         */
         public Node<T> prev;
+        /**
+         * The next node in the deque.
+         */
         public Node<T> next;
 
+        /**
+         * Constructs a new node with the given value.
+         *
+         * @param value the element data value for the new node
+         */
         public Node(T value) {
             this(value, null, null);
         }
 
+        /**
+         * Constructs a new node with the given value, previous node, and next node.
+         *
+         * @param value the element data value for the new node
+         * @param prev the previous node in the deque, or null
+         * @param next the next node in the deque, or null
+         */
         public Node(T value, Node<T> prev, Node<T> next) {
             this.value = value;
             this.prev = prev;

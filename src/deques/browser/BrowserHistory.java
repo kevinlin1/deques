@@ -3,6 +3,9 @@ package deques.browser;
 import deques.ArrayDeque;
 import deques.Deque;
 
+/**
+ * Simulate web browser history using deques.
+ */
 public class BrowserHistory {
     public static void main(String[] args) {
         Deque<String> history = new ArrayDeque<>();
