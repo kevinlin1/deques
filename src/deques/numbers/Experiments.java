@@ -1,17 +1,13 @@
 package deques.numbers;
 
-import deques.ArrayDeque;
 import deques.Deque;
-import deques.LinkedDeque;
 
 import java.io.PrintStream;
-import java.util.Map;
-import java.util.function.Supplier;
 
 /**
  * Run timing experiments and output the results.
  */
-public class NumbersInputSizeExperiments {
+public abstract class Experiments {
     /**
      * Number of trials per implementation run. Making this smaller means experiments run faster.
      */
@@ -25,19 +21,22 @@ public class NumbersInputSizeExperiments {
      */
     public static final int STEP = 100;
 
-    public static void main(String[] args) {
-        Map<String, Supplier<Deque<Integer>>> implementations = Map.of(
-                "ArrayDeque", ArrayDeque::new,
-                // "ArrayListDeque", ArrayListDeque::new,
-                "LinkedDeque", LinkedDeque::new
-        );
-        for (String name : implementations.keySet()) {
-            System.out.println(name);
-            run(implementations.get(name), System.out);
-        }
-    }
+    /**
+     * Returns an empty {@link Deque}.
+     *
+     * @param <T> the type of elements in the returned deque
+     * @return an empty deque
+     */
+    protected abstract <T> Deque<T> createDeque();
 
-    private static void run(Supplier<Deque<Integer>> implementation, PrintStream out) {
+    /**
+     * Output the time in seconds that it takes to add and get elements from a deque to the given
+     * {@link PrintStream} for increasingly-large deques of integers. The output is given as comma-
+     * separated values with columns deque size, add time (seconds), and get time (seconds).
+     *
+     * @param out the timing experiment results in comma-separated values format
+     */
+    protected void run(PrintStream out) {
         out.println("size,add,get");
         for (int size = STEP; size <= MAX_SIZE; size += STEP) {
             out.print(size);
@@ -48,7 +47,7 @@ public class NumbersInputSizeExperiments {
             double totalGetTime = 0.0;
 
             for (int i = 0; i < NUM_TRIALS; i += 1) {
-                Deque<Integer> deque = implementation.get();
+                Deque<Integer> deque = createDeque();
 
                 // Measure the time to add integers
                 long addStart = System.nanoTime();
@@ -61,7 +60,7 @@ public class NumbersInputSizeExperiments {
 
                 // Measure the time to get the item at the given index
                 long getStart = System.nanoTime();
-                deque.get(0);
+                deque.get(size / 2);
                 long getTime = System.nanoTime() - getStart;
                 totalGetTime += (double) getTime / 1_000_000_000;
             }
