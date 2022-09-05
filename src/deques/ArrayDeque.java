@@ -18,17 +18,15 @@ public class ArrayDeque<T> implements Deque<T> {
     private static int increment(int i, int length) {
         if (i == length - 1) {
             return 0;
-        } else {
-            return i + 1;
         }
+        return i + 1;
     }
 
     private static int decrement(int i, int length) {
         if (i == 0) {
             return length - 1;
-        } else {
-            return i - 1;
         }
+        return i - 1;
     }
 
     public void addFirst(T item) {
@@ -80,10 +78,9 @@ public class ArrayDeque<T> implements Deque<T> {
     public T get(int index) {
         if (index >= size) {
             return null;
-        } else {
-            int place = front + 1 + index;
-            return data[place % data.length];
         }
+        int place = front + 1 + index;
+        return data[place % data.length];
     }
 
     public String toString() {
