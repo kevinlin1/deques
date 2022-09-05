@@ -1,5 +1,8 @@
 package deques;
 
+/**
+ * Tests for the {@link ArrayDeque} class.
+ */
 public class ArrayDequeTests extends DequeTests {
     @Override
     protected <T> Deque<T> createDeque() {

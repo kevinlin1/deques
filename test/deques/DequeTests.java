@@ -5,9 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests written in this class will be run by both ArrayDequeTests and LinkedDequeTests
+ * Abstract class providing test cases for all implementations of the {@link Deque} interface.
+ *
+ * @see Deque
  */
 public abstract class DequeTests {
+    /**
+     * Returns an empty {@link Deque}.
+     *
+     * @param <T> the type of elements in the returned deque
+     * @return an empty deque
+     */
     protected abstract <T> Deque<T> createDeque();
 
     @Test
