@@ -1,7 +1,7 @@
 package deques;
 
-/** A buggy array implementation of the Deque interface. */
-public class ArrayDeque<T> extends AbstractDeque<T> {
+/** An array implementation of the Deque interface. */
+public class ArrayDeque<T> implements Deque<T> {
     private T[] data;
     private int front;
     private int back;

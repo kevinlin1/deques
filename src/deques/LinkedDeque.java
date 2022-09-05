@@ -3,13 +3,10 @@ package deques;
 /**
  * @see Deque
  */
-public class LinkedDeque<T> extends AbstractDeque<T> {
+public class LinkedDeque<T> implements Deque<T> {
+    private Node<T> front;
+    private Node<T> back;
     private int size;
-    // IMPORTANT: Do not rename these fields or change their visibility.
-    // We access these during grading to test your code.
-    Node<T> front;
-    Node<T> back;
-    // Feel free to add any additional fields you may need, though.
 
     public LinkedDeque() {
         size = 0;
