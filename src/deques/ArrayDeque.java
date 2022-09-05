@@ -84,8 +84,7 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public String toString() {
-        // We use a StringBuilder since it concatenates strings more efficiently
-        // than using += in a loop
+        // StringBuilder concatenates strings more efficiently than += in a loop
         StringBuilder output = new StringBuilder();
         if (size >= 0) {
             int counter = 0;
