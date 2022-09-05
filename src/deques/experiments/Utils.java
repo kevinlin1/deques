@@ -1,7 +1,6 @@
 package deques.experiments;
 
 import deques.Deque;
-import org.openjdk.jol.info.GraphLayout;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -15,13 +14,6 @@ public class Utils {
             deque.addLast(i);
         }
         return deque;
-    }
-
-    /**
-     * Returns the approximate amount of memory used by the entire object, in bytes.
-     */
-    public static long estimateObjectMemoryUsage(Object obj) {
-        return GraphLayout.parseInstance(obj).totalSize();
     }
 
     /**

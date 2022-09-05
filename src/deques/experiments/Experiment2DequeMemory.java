@@ -3,12 +3,12 @@ package deques.experiments;
 import deques.ArrayDeque;
 import deques.Deque;
 import deques.LinkedDeque;
+import org.openjdk.jol.info.GraphLayout;
 
 import java.util.List;
 import java.util.function.LongUnaryOperator;
 
 import static deques.experiments.Utils.createDequeOfSize;
-import static deques.experiments.Utils.estimateObjectMemoryUsage;
 import static deques.experiments.Utils.range;
 
 public class Experiment2DequeMemory {
@@ -48,14 +48,12 @@ public class Experiment2DequeMemory {
 
     public long f1(long size) {
         Deque<Long> deque = createLinkedDequeOfSize(size);
-
         // estimate memory usage of the deque (including memory used by its items)
-        return estimateObjectMemoryUsage(deque);
+        return GraphLayout.parseInstance(deque).totalSize();
     }
 
     public long f2(long size) {
         Deque<Long> deque = createArrayDequeOfSize(size);
-
-        return estimateObjectMemoryUsage(deque);
+        return GraphLayout.parseInstance(deque).totalSize();
     }
 }
