@@ -2,6 +2,8 @@ package deques;
 
 /**
  * Tests for the {@link LinkedDeque} class.
+ *
+ * @see LinkedDeque
  */
 public class LinkedDequeTests extends DequeTests {
     @Override
