@@ -27,7 +27,7 @@ public abstract class Experiments {
      * @param <T> the type of elements in the returned deque
      * @return an empty deque
      */
-    protected abstract <T> Deque<T> createDeque();
+    public abstract <T> Deque<T> createDeque();
 
     /**
      * Output the time in seconds that it takes to add and get elements from a deque to the given
@@ -36,7 +36,7 @@ public abstract class Experiments {
      *
      * @param out the timing experiment results in comma-separated values format
      */
-    protected void run(PrintStream out) {
+    public void run(PrintStream out) {
         out.println("size,add,get");
         for (int size = STEP; size <= MAX_SIZE; size += STEP) {
             out.print(size);

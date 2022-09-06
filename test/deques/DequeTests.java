@@ -16,7 +16,7 @@ public abstract class DequeTests {
      * @param <T> the type of elements in the returned deque
      * @return an empty deque
      */
-    protected abstract <T> Deque<T> createDeque();
+    public abstract <T> Deque<T> createDeque();
 
     @Test
     void sizeWhenEmptyIsZero() {

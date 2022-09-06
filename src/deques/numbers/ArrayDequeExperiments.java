@@ -10,7 +10,7 @@ import deques.Deque;
  */
 public class ArrayDequeExperiments extends Experiments {
     @Override
-    protected <T> Deque<T> createDeque() {
+    public <T> Deque<T> createDeque() {
         return new ArrayDeque<>();
     }
 
