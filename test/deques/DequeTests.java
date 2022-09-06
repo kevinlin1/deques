@@ -1,5 +1,6 @@
 package deques;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -218,5 +219,63 @@ public abstract class DequeTests {
         // TODO ArrayDeque fails here; write better tests to help you find and fix the bug
         int actual = deque.removeLast();
         assertEquals(1, actual);
+    }
+
+    @Nested
+    class RuntimeExperiments {
+        /**
+         * Number of trials per implementation run. Making this smaller means experiments run faster.
+         */
+        public static final int NUM_TRIALS = 1000;
+        /**
+         * Maximum number of elements to add.
+         */
+        public static final int MAX_SIZE = 20000;
+        /**
+         * Step size increment. Making this smaller means experiments run slower.
+         */
+        public static final int STEP = 100;
+
+        /**
+         * Print the time in seconds that it takes to add and get elements from a deque for
+         * increasingly-large deques of integers. The output is given as comma-separated values with
+         * columns deque size, add time (seconds), and get time (seconds).
+         */
+        @Test
+        void addLastGetMiddle() {
+            for (int size = STEP; size <= MAX_SIZE; size += STEP) {
+                System.out.print(size);
+                System.out.print(',');
+
+                // Record the total runtimes accumulated across all trials
+                double totalAddTime = 0.0;
+                double totalGetTime = 0.0;
+
+                for (int i = 0; i < NUM_TRIALS; i += 1) {
+                    Deque<Integer> deque = createDeque();
+
+                    // Measure the time to add integers
+                    long addStart = System.nanoTime();
+                    for (int j = 0; j < size; j += 1) {
+                        deque.addLast(j);
+                    }
+                    long addTime = System.nanoTime() - addStart;
+                    // Convert from nanoseconds to seconds and add to total time
+                    totalAddTime += (double) addTime / 1_000_000_000;
+
+                    // Measure the time to get the item at the given index
+                    long getStart = System.nanoTime();
+                    deque.get(size / 2);
+                    long getTime = System.nanoTime() - getStart;
+                    totalGetTime += (double) getTime / 1_000_000_000;
+                }
+
+                // Output the averages to 10 decimal places.
+                System.out.printf("%.10f", totalAddTime / NUM_TRIALS);
+                System.out.print(',');
+                System.out.printf("%.10f", totalGetTime / NUM_TRIALS);
+                System.out.println();
+            }
+        }
     }
 }
