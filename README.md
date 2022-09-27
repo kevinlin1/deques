@@ -88,12 +88,12 @@ As you implement `ArrayListDeque`, write a test class `ArrayListDequeTests` foll
 
 > For the following asymptotic analysis questions, we'll ignore the `get` method because we introduced it primarily as a convenience method for testing purposes.
 
-*Most of the time*, the order of growth of the runtime for `ArrayDeque` methods is constant with respect to the size of the deque. Perform a **case analysis** to explain the condition(s) when the runtime is constant and the condition(s) when the runtime is not constant.
+*Most of the time*, the order of growth of the runtime for `ArrayDeque` methods is constant with respect to the size of the deque. Perform a **case analysis** to explain the case(s) when the runtime is constant and the case(s) when the runtime is not constant.
 
-`ArrayListDeque` required much less code to implement than `ArrayDeque`. But there are circumstances where we would prefer the more complicated `ArrayDeque` implementation. Give an argument based on asymptotic analysis about why we might prefer `ArrayDeque` over `ArrayListDeque`.
+`ArrayListDeque` required much less code to implement than `ArrayDeque`. In computer science, simpler solutions are typically preferred over more complicated solutions because they're less likely to contain subtle bugs. Give an argument based on asymptotic analysis about why we might prefer the more complicated `ArrayDeque` class over the simpler `ArrayListDeque` class.
 
 ### Experimental analysis
 
 At the bottom of the `DequeTests` class, you'll find a nested class called `RuntimeExperiments` that is annotated `@Disabled`. Remove the `@Disabled` annotation and re-run all the deque tests to record the time it takes to repeatedly call `addLast` and `get` (on the middle element) for each implementation. Once the runtimes have been generated, copy and paste each result into its own [Desmos graphing calculator](https://www.desmos.com/calculator) to plot all the points. For each plot, [calculate a line of best fit using Desmos](https://youtu.be/ADaNyIf6NhY) for the time it takes to call `addLast` and for the time it takes to `get` the middle element.
 
-Finally, give an argument based on experimental analysis about why we might prefer `ArrayDeque` over `ArrayListDeque`. Modify the `RuntimeExperiments` class and re-run the tests to generate the data to substantiate your argument.
+Finally, let's use experimental analysis to support your earlier argument for `ArrayDeque` over `ArrayListDeque`. Modify the `RuntimeExperiments` class so that it presents the differences you hypothesized would exist in asymptotic analysis, and re-run the tests to generate the plots to confirm that `ArrayDeque` is more efficient than `ArrayListDeque` on certain operations.
