@@ -28,7 +28,7 @@ Unlike your prior programming courses, the focus of this course is not only to b
 
 We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy, and a failing test case that causes the bug to emerge. Your task is to fix the bug in the `ArrayDeque` class. (This should only involve changing **at most 5 lines of code**.)
 
-Now that we know how to navigate between different views, follow the debugging cycle to address the bug.
+Follow the debugging cycle to address the bug.
 
 1. Skim the `ArrayDeque` code to see how its methods and fields work together to implement the `Deque` interface.
 1. Run the tests by opening the **test** folder, then the **deques** folder, and finally the `ArrayDequeTests` class.
