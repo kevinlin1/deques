@@ -31,9 +31,9 @@ We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy
 Follow the debugging cycle to address the bug.
 
 1. Skim the `ArrayDeque` code to see how its methods and fields work together to implement the `Deque` interface.
-1. Run the tests by opening the **test** folder, then the **deques** folder, and finally the `ArrayDequeTests` class.
+1. Run the `ArrayDequeTests` class inside the `test/deques` folder.
 1. Read the test result description and review the stack trace (the chain of calls that caused the exception).
-1. Read through `ArrayDeque` again, this time focusing on methods most relevant to the failing tests.
+1. Read through `ArrayDeque` again, this time focusing on methods most relevant to the failing tests. You can open the `DequeTests` file and [drag the tab for a side-by-side view](https://www.jetbrains.com/idea/guide/tips/drag-and-dock/) with your `ArrayDeque` code.
 1. Based on what you now know about the bug, develop a hypothesis for what could have caused the problem.
 
 > For example, we might *hypothesize* that the way that the `newIndex` variable inside the `resize` method is going outside the bounds of the `newData` array. Knowing the answer to this question might help us zero-in on the problem, leading us to generate another hypothesis that provides a more direct line of reasoning about the line of code that caused `newIndex` to grow too large.
