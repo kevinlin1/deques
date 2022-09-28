@@ -46,6 +46,21 @@ A unit test is a method designed to verify that a single piece of functionality 
 
 Once you've identified the root cause, make a change that will address it. Check your work by running the test again. If there are more issues, you can go back and generate another hypothesis. This process can take a while: even professional programmers spend a lot of time debugging. The advantage of experience is that you're able to more rapidly generate new hypotheses and eliminate hypotheses that wouldn't work without having to test them by editing the code.
 
+After you've implemented a fix, make sure that it also works with this alternative sequence of tricky removes.
+
+```java
+// Test a tricky sequence of removes
+assertEquals(5, deque.removeLast());
+assertEquals(4, deque.removeLast());
+assertEquals(3, deque.removeLast());
+assertEquals(2, deque.removeLast());
+assertEquals(1, deque.removeLast());
+
+// TODO ArrayDeque fails here; write better tests to help you find and fix the bug
+int actual = deque.removeLast();
+assertEquals(0, actual);
+```
+
 ### LinkedDeque
 
 Implement the `LinkedDeque` class with the following additional requirements:
