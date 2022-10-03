@@ -83,7 +83,7 @@ A `LinkedDeque` should always maintain the following invariants before and after
 
 To assist in debugging, we've provided a `checkInvariants` method that returns null if and only if the above invariants are maintained (at the time the method is called), or a string describing the problem. One way to use this method is to add debugging print statements where you *hypothesize* a bug might be present. But it can be tedious editing code, moving the line around, and then running it again just to call `checkInvariants` at a different place. A better way is by [Using **Evaluate Expression** and **Watches** with IntelliJ](https://youtu.be/u5NSgMCkqOg). This allows you to pause the program at any point in time and call `checkInvariants()` or even visualize the `LinkedDeque` using the [jGRASP](https://plugins.jetbrains.com/plugin/12769-jgrasp) or [Java Visualizer](https://plugins.jetbrains.com/plugin/11512-java-visualizer) plugins.
 
-Lastly, if your first try goes badly, don't be afraid to scrap your code and start over. My solution adds between 4 to 6 lines of code per method.
+Lastly, if your first try goes badly, don't be afraid to scrap your code and start over. My solution adds between 4 to 6 lines of code per method and doesn't add any `if` statements.
 
 ### ArrayListDeque
 
