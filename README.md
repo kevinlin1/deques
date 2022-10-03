@@ -87,7 +87,14 @@ Lastly, if your first try goes badly, don't be afraid to scrap your code and sta
 
 ### ArrayListDeque
 
-Finally, define a new class called `ArrayListDeque` that implements the `Deque` interface. This class should maintain a single field:
+Finally, define a new class called `ArrayListDeque` that implements the `Deque` interface.
+
+1. In IntelliJ, open the `Deque` interface.
+1. Move your cursor to the name of the interface, `Deque`, on line 11.
+1. Use the key combination <kbd>Alt + Enter</kbd> to bring up the context actions.
+1. Select **Implement interface** and name your implementation `ArrayListDeque`.
+
+This class should maintain a single field:
 
 ```java
 private final ArrayList<T> list;
