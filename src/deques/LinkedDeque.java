@@ -171,11 +171,7 @@ public class LinkedDeque<T> implements Deque<T> {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "value=" + value +
-                    ", prev=" + prev +
-                    ", next=" + next +
-                    '}';
+            return "Node{value=" + value + '}';
         }
     }
 }
