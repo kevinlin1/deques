@@ -26,7 +26,7 @@ Unlike your prior programming courses, the focus of this course is not only to b
 
 [^1]: Josh Hug. 2019. cs61b sp19 proj1 slides. In CS 61B: Data Structures, Spring 2019. <https://docs.google.com/presentation/d/1XBJOht0xWz1tEvLuvOL4lOIaY0NSfArXAvqgkrx0zpc/edit>
 
-We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy, and a failing test case that causes the bug to emerge. Your task is to fix the bug in the `ArrayDeque` class. (This should only involve changing **at most 5 lines of code**.)
+We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy, and a failing test case that causes the bug to emerge. Your task is to fix the bug in the `ArrayDeque` class. Our solution changes only 2 lines of code, but you're welcome to make more changes as you see fit.
 
 Follow the debugging cycle to address the bug.
 
@@ -36,15 +36,11 @@ Follow the debugging cycle to address the bug.
 1. Read through `ArrayDeque` again, this time focusing on methods most relevant to the failing tests. You can open the `DequeTests` file and [drag the tab for a side-by-side view](https://www.jetbrains.com/idea/guide/tips/drag-and-dock/) with your `ArrayDeque` code.
 1. Based on what you now know about the bug, develop a hypothesis for what could have caused the problem.
 
-> For example, we might *hypothesize* that the way that the `newIndex` variable inside the `resize` method is going outside the bounds of the `newData` array. Knowing the answer to this question might help us zero-in on the problem, leading us to generate another hypothesis that provides a more direct line of reasoning about the line of code that caused `newIndex` to grow too large.
+> For example, we might *hypothesize* that the way that the `newIndex` variable inside the `resize` method is going outside the bounds of the `newData` array. Knowing the answer to this question might help us zero-in on the problem, leading us to generate another hypothesis that provides a more direct line of reasoning about the line of code that caused `newIndex` to grow too large. The fix to a bug often leads directly from an explanation about the problem.
 
-To verify a hypothesis, we can add **debugging print statements** to show the current value of a field or a variable in the program. Using your debugging print statements, can you piece together what's causing the problem? It may or may not be easy because the `confusingTest` has so much packed into it. We can write a simpler **unit test** that can make things easier to debug by adding another test method to the `DequeTests` class.
+> ✨ It's easy to lose track of time and get stuck in a deep hole when debugging. Come to office hours, chat with other students, or return after taking a break!
 
-A unit test is a method designed to verify that a single piece of functionality (like a single method in the `ArrayDeque` class) works as expected. In this project, we're using the JUnit framework, which allows you to define unit tests using an `@Test` annotation as seen in the `DequeTests` class. Try following the examples in the `DequeTests` class to define a unit test of your own that can reproduce the problem in `confusingTest` in as few lines as possible. Writing smaller tests can help us keep track of all the important details needed to debug a program.
-
-> ✨ Identifying the root cause is one of the most important parts of debugging. The fix to a bug often leads directly from an explanation about the problem. It's easy to lose track of time and get stuck in a deep hole when debugging. Come to office hours, chat with other students, and return after taking a break!
-
-Once you've identified the root cause, make a change that will address it. Check your work by running the test again. If there are more issues, you can go back and generate another hypothesis. This process can take a while: even professional programmers spend a lot of time debugging. The advantage of experience is that you're able to more rapidly generate new hypotheses and eliminate hypotheses that wouldn't work without having to test them by editing the code.
+To verify a hypothesis, we can use the debugger to pause the program at any point in time. [Watch this video](https://youtu.be/e7K8CNr3j2w) by Iris Zhou to learn more about how to debug your deques in IntelliJ.
 
 After you've implemented a fix, make sure that it also works with this alternative sequence of tricky removes.
 
