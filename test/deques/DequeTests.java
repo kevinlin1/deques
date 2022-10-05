@@ -181,10 +181,6 @@ public abstract class DequeTests {
         assertTrue(b);
     }
 
-    /**
-     * This test demonstrates why we like unit tests that test a single unit at a time: calling
-     * multiple methods in the same test makes issues very hard to debug.
-     */
     @Test
     void confusingTest() {
         Deque<Integer> deque = createDeque();
@@ -217,7 +213,7 @@ public abstract class DequeTests {
         assertEquals(3, deque.removeLast());
         assertEquals(2, deque.removeLast());
 
-        // TODO ArrayDeque fails here; write better tests to help you find and fix the bug
+        // TODO: Set a breakpoint on the next line and use the debugger to verify your hypothesis
         int actual = deque.removeLast();
         assertEquals(1, actual);
     }
