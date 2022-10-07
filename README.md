@@ -89,6 +89,7 @@ Finally, define a new class called `ArrayListDeque` that implements the `Deque` 
 1. Move your cursor to the name of the interface, `Deque`, on line 11.
 1. Use the key combination <kbd>Alt + Enter</kbd> to bring up the context actions.
 1. Select **Implement interface** and name your implementation `ArrayListDeque`.
+1. Once you've created your new class, from the main menu, select **Code | Implement methods** or press <kbd>Ctrl + I</kbd>. You can also right-click anywhere in the class file, then click **Generate** <kbd>Alt + Insert</kbd>, and select **Implement methods**.
 
 This class should maintain a single field:
 
