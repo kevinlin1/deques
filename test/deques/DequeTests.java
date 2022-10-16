@@ -236,7 +236,7 @@ public abstract class DequeTests {
 
         /**
          * Print the time in seconds that it takes to add elements to an increasingly-large deque.
-         * The output is given as comma-separated values with columns size and add time (seconds).
+         * The output is comma-separated with columns for deque size and add time (nanoseconds).
          */
         @Test
         void add() {
@@ -244,24 +244,28 @@ public abstract class DequeTests {
                 System.out.print(size);
                 System.out.print(',');
 
+                // Create a new deque and add size-number of integers
+                Deque<Integer> deque = createDeque();
+                for (int j = 0; j < size; j += 1) {
+                    deque.addLast(j);
+                }
+
                 // Record the total runtimes accumulated across all trials
-                double totalAddTime = 0.0;
+                long totalAddTime = 0;
 
                 for (int i = 0; i < NUM_TRIALS; i += 1) {
-                    Deque<Integer> deque = createDeque();
-
-                    // Measure the time to add integers
+                    // Measure the time to add one more integer
                     long addStart = System.nanoTime();
-                    for (int j = 0; j < size; j += 1) {
-                        deque.addLast(j);
-                    }
+                    deque.addLast(size);
                     long addTime = System.nanoTime() - addStart;
-                    // Convert from nanoseconds to seconds and add to total time
-                    totalAddTime += (double) addTime / 1_000_000_000;
+                    // Add to total time
+                    totalAddTime += addTime;
+                    // Remove the just-added integer
+                    deque.removeLast();
                 }
 
                 // Output the averages to 10 decimal places.
-                System.out.printf("%.10f", totalAddTime / NUM_TRIALS);
+                System.out.printf("%.10f", totalAddTime / (double) NUM_TRIALS);
                 System.out.println();
             }
         }
