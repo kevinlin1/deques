@@ -235,19 +235,17 @@ public abstract class DequeTests {
         public static final int STEP = 100;
 
         /**
-         * Print the time in seconds that it takes to add and get elements from a deque for
-         * increasingly-large deques of integers. The output is given as comma-separated values with
-         * columns deque size, add time (seconds), and get time (seconds).
+         * Print the time in seconds that it takes to add elements to an increasingly-large deque.
+         * The output is given as comma-separated values with columns size and add time (seconds).
          */
         @Test
-        void addLastGetMiddle() {
+        void add() {
             for (int size = STEP; size <= MAX_SIZE; size += STEP) {
                 System.out.print(size);
                 System.out.print(',');
 
                 // Record the total runtimes accumulated across all trials
                 double totalAddTime = 0.0;
-                double totalGetTime = 0.0;
 
                 for (int i = 0; i < NUM_TRIALS; i += 1) {
                     Deque<Integer> deque = createDeque();
@@ -260,18 +258,10 @@ public abstract class DequeTests {
                     long addTime = System.nanoTime() - addStart;
                     // Convert from nanoseconds to seconds and add to total time
                     totalAddTime += (double) addTime / 1_000_000_000;
-
-                    // Measure the time to get the item at the given index
-                    long getStart = System.nanoTime();
-                    deque.get(size / 2);
-                    long getTime = System.nanoTime() - getStart;
-                    totalGetTime += (double) getTime / 1_000_000_000;
                 }
 
                 // Output the averages to 10 decimal places.
                 System.out.printf("%.10f", totalAddTime / NUM_TRIALS);
-                System.out.print(',');
-                System.out.printf("%.10f", totalGetTime / NUM_TRIALS);
                 System.out.println();
             }
         }
