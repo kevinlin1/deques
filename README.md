@@ -18,15 +18,32 @@ Interfaces are a useful way to indicate common methods provided by all implement
 
 ## Design and implement
 
-Unlike your prior programming courses, the focus of this course is not only to build programs that work according to specifications but also to compare different approaches and evaluate the consequences of our designs. In this project, we'll compare three different ways to implement the `Deque` interface: `ArrayDeque`, `LinkedDeque`, and `ArrayListDeque`.
+Unlike your prior programming courses, the focus of this course is not only to build programs that work according to specifications but also to compare different approaches and evaluate the consequences of our designs. In this project, we'll compare three different ways to implement the `Deque` interface: `ArrayListDeque`, `ArrayDeque`, and `LinkedDeque`.
+
+### ArrayListDeque
+
+Define a new class called `ArrayListDeque` that implements the `Deque` interface.
+
+1. In IntelliJ, open the `Deque` interface in the `src/deques` folder.
+1. Click on the name of the interface, `Deque`, and press the <kbd>Alt</kbd> <kbd>Enter</kbd> keys to bring up the context actions.
+1. Select **Implement interface** and name your implementation `ArrayListDeque`.
+1. Finally, [**implement required methods**](https://www.jetbrains.com/help/idea/implementing-methods-of-an-interface.html#required-methods).
+
+All `Deque` methods are implemented by *delegating* the work to the underlying `ArrayList` using **at most 4 lines of code** per method. This class should maintain only a single field:
+
+```java
+private final ArrayList<T> list;
+```
+
+To check your `ArrayListDeque` implementation, define a new test class called `ArrayListDequeTests`. Open the `DequeTests` abstract class inside the `test/deques` folder and follow the instructions above to create a new class using the context actions again. In your `createDeque` method, return a new `ArrayListDeque`.
 
 ### ArrayDeque
 
-> ✨ An [**ArrayDeque**](https://docs.google.com/presentation/d/1c9RdR7fz-CyTH9bHzJ5bhlfmlUHgpC-EK9d3a8PMiuo/edit?usp=sharing)[^1] is like the array-based list data structures that you've learned before, but different in that elements aren't necessarily stored starting at index 0. Instead, their start and end positions are determined by two fields called `front` and `back`.
+An [**ArrayDeque**](https://docs.google.com/presentation/d/1c9RdR7fz-CyTH9bHzJ5bhlfmlUHgpC-EK9d3a8PMiuo/edit?usp=sharing)[^1] is like the array-based list data structures that you've learned before, but different in that elements aren't necessarily stored starting at index 0. Instead, their start and end positions are determined by two fields called `front` and `back`.
 
 [^1]: Josh Hug. 2019. cs61b sp19 proj1 slides. In CS 61B: Data Structures, Spring 2019. <https://docs.google.com/presentation/d/1XBJOht0xWz1tEvLuvOL4lOIaY0NSfArXAvqgkrx0zpc/edit>
 
-We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy, and a failing test case that causes the bug to emerge. Your task is to fix the bug in the `ArrayDeque` class. Our solution changes only 2 lines of code, but you're welcome to make more changes as you see fit.
+We've provided a *nearly*-working `ArrayDeque` class that is intentionally buggy, and a failing test case that causes the bug to emerge. Your task is to fix the bug in the `ArrayDeque` class by changing at least 2 lines of code.
 
 Follow the debugging cycle to address the bug.
 
@@ -80,26 +97,6 @@ A `LinkedDeque` should always maintain the following invariants before and after
 To assist in debugging, we've provided a `checkInvariants` method that returns null if and only if the above invariants are maintained (at the time the method is called), or a string describing the problem. One way to use this method is to add debugging print statements where you *hypothesize* a bug might be present. But it can be tedious editing code, moving the line around, and then running it again just to call `checkInvariants` at a different place. A better way is by [Using **Evaluate Expression** and **Watches** with IntelliJ](https://youtu.be/u5NSgMCkqOg). This allows you to pause the program at any point in time and call `checkInvariants()` or even visualize the `LinkedDeque` using the [jGRASP](https://plugins.jetbrains.com/plugin/12769-jgrasp) or [Java Visualizer](https://plugins.jetbrains.com/plugin/11512-java-visualizer) plugins.
 
 Lastly, if your first try goes badly, don't be afraid to scrap your code and start over. My solution adds between 4 to 6 lines of code per method and doesn't add any `if` statements.
-
-### ArrayListDeque
-
-Finally, define a new class called `ArrayListDeque` that implements the `Deque` interface.
-
-1. In IntelliJ, open the `Deque` interface.
-1. Move your cursor to the name of the interface, `Deque`, on line 11.
-1. Use the key combination <kbd>Alt + Enter</kbd> to bring up the context actions.
-1. Select **Implement interface** and name your implementation `ArrayListDeque`.
-1. Once you've created your new class, from the main menu, select **Code | Implement methods** or press <kbd>Ctrl + I</kbd>. You can also right-click anywhere in the class file, then click **Generate** <kbd>Alt + Insert</kbd>, and select **Implement methods**.
-
-This class should maintain a single field:
-
-```java
-private final ArrayList<T> list;
-```
-
-All `Deque` methods are implemented by *delegating* the work to the underlying `ArrayList`. Unlike `ArrayDeque`, which required lots of code to move data around the array, the methods in `ArrayListDeque` only need to call `ArrayList` methods using **at most 4 lines of code** per method.
-
-As you implement `ArrayListDeque`, write a test class `ArrayListDequeTests` following the same pattern as `ArrayDequeTests` and `LinkedDequeTests`, and check that your `ArrayListDeque` also works!
 
 ## Analyze and compare
 
