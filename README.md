@@ -104,7 +104,7 @@ Lastly, if your first try goes badly, don't be afraid to scrap your code and sta
 
 > For the following asymptotic analysis questions, we'll ignore the `get` method because we introduced it primarily as a convenience method for testing purposes.
 
-*Most of the time*, the order of growth of the runtime for `ArrayDeque` methods is constant with respect to the size of the deque. Perform a **case analysis** to explain the case(s) when the runtime is constant and the case(s) when the runtime is not constant.
+Ignoring the time it takes to resize the underlying data array, the order of growth of the runtime for `ArrayDeque` methods are constant with respect to the size of the deque. Perform a **case analysis** to explain the case(s) when the runtime is constant and the case(s) when the runtime is not constant.
 
 `ArrayListDeque` required much less code to implement than `ArrayDeque`. In computer science, simpler solutions are typically preferred over more complicated solutions because they're less likely to contain subtle bugs. Give an argument based on asymptotic analysis about why we might prefer the more complicated `ArrayDeque` class over the simpler `ArrayListDeque` class.
 
