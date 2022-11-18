@@ -213,7 +213,6 @@ public abstract class DequeTests {
         assertEquals(3, deque.removeLast());
         assertEquals(2, deque.removeLast());
 
-        // TODO: Set a breakpoint on the next line and use the debugger to verify your hypothesis
         int actual = deque.removeLast();
         assertEquals(1, actual);
     }
