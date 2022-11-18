@@ -1,6 +1,5 @@
 package deques;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -218,7 +217,6 @@ public abstract class DequeTests {
     }
 
     @Nested
-    @Disabled
     class RuntimeExperiments {
         /**
          * Number of trials per implementation run. Making this smaller means experiments run faster.
