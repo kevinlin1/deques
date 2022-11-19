@@ -9,11 +9,11 @@ public class LinkedDeque<T> implements Deque<T> {
     /**
      * The sentinel node representing the front of this deque.
      */
-    private Node<T> front;
+    private final Node<T> front;
     /**
      * The sentinel node representing the back of this deque.
      */
-    private Node<T> back;
+    private final Node<T> back;
     /**
      * The number of elements in this deque.
      */
@@ -89,12 +89,8 @@ public class LinkedDeque<T> implements Deque<T> {
      * @return null if this deque is valid, or a description of the error
      */
     private String checkInvariants() {
-        if (front == null) {
-            return "Unexpected reference: front should reference a sentinel node but was <null>";
-        } else if (front.prev != null) {
+        if (front.prev != null) {
             return "Unexpected reference: front.prev should be <null> but was <" + front.prev + ">";
-        } else if (back == null) {
-            return "Unexpected reference: back should reference a sentinel node but was <null>";
         } else if (back.next != null) {
             return "Unexpected reference: back.next should be <null> but was <" + back.next + ">";
         }
