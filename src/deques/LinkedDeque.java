@@ -69,8 +69,12 @@ public class LinkedDeque<T> implements Deque<T> {
         if ((index >= size) || (index < 0)) {
             return null;
         }
-        // TODO: Replace with your code
-        throw new UnsupportedOperationException("Not implemented yet");
+        Node<T> curr = front.next;
+        while (index > 0) {
+            curr = curr.next;
+            index -= 1;
+        }
+        return curr.value;
     }
 
     @Override
