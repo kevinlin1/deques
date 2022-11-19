@@ -23,8 +23,11 @@ public class LinkedDeque<T> implements Deque<T> {
      * Constructs an empty deque.
      */
     public LinkedDeque() {
+        front = new Node<>(null);
+        back = new Node<>(null);
+        front.next = back;
+        back.prev = front;
         size = 0;
-        // TODO: Replace with your code
     }
 
     @Override
