@@ -1,5 +1,3 @@
-package deques.browser;
-
 import deques.ArrayDeque;
 import deques.Deque;
 
