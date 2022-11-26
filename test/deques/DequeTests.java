@@ -262,7 +262,7 @@ public abstract class DequeTests {
                 }
 
                 // Output the averages to 10 decimal places.
-                System.out.printf("%.10f", totalAddTime / (double) NUM_TRIALS);
+                System.out.print(totalAddTime / (double) NUM_TRIALS);
                 System.out.println();
             }
         }
