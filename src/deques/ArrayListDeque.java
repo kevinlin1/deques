@@ -7,11 +7,11 @@ import java.util.ArrayList;
  *
  * @see Deque
  */
-public class ArrayListDeque<T> implements Deque<T> {
+public class ArrayListDeque<E> implements Deque<E> {
     /**
      * The underlying list of elements stored in this deque.
      */
-    private final ArrayList<T> list;
+    private final ArrayList<E> list;
 
     /**
      * Constructs an empty deque.
@@ -21,17 +21,17 @@ public class ArrayListDeque<T> implements Deque<T> {
     }
 
     @Override
-    public void addFirst(T item) {
-        list.add(0, item);
+    public void addFirst(E element) {
+        list.add(0, element);
     }
 
     @Override
-    public void addLast(T item) {
-        list.add(item);
+    public void addLast(E element) {
+        list.add(element);
     }
 
     @Override
-    public T get(int index) {
+    public E get(int index) {
         return list.get(index);
     }
 
@@ -41,12 +41,12 @@ public class ArrayListDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T removeFirst() {
+    public E removeFirst() {
         return list.remove(0);
     }
 
     @Override
-    public T removeLast() {
+    public E removeLast() {
         return list.remove(size() - 1);
     }
 }

@@ -14,10 +14,10 @@ public abstract class DequeTests {
     /**
      * Returns an empty {@link Deque}.
      *
-     * @param <T> the type of elements in the returned deque
+     * @param <E> the type of elements in the returned deque
      * @return an empty deque
      */
-    public abstract <T> Deque<T> createDeque();
+    public abstract <E> Deque<E> createDeque();
 
     @Test
     void sizeWhenEmptyIsZero() {
@@ -61,14 +61,14 @@ public abstract class DequeTests {
     }
 
     @Test
-    void sizeWithOneItemIsOne() {
+    void sizeWithOneElementIsOne() {
         Deque<String> deque = createDeque();
         deque.addFirst("s");
         assertEquals(1, deque.size());
     }
 
     @Test
-    void getIndexZeroWithOneItemReturnsItem() {
+    void getIndexZeroWithOneElementReturnsElement() {
         Deque<String> deque = createDeque();
         deque.addFirst("s");
         String output = deque.get(0);
@@ -76,7 +76,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void removeAfterAddOneItemToSameSideReturnsItem() {
+    void removeAfterAddOneElementToSameSideReturnsElement() {
         Deque<String> deque = createDeque();
         deque.addFirst("s");
         String output = deque.removeFirst();
@@ -84,7 +84,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void removeAfterAddOneItemToOppositeSideReturnsItem() {
+    void removeAfterAddOneElementToOppositeSideReturnsElement() {
         Deque<String> deque = createDeque();
         deque.addFirst("s");
         String output = deque.removeLast();
@@ -99,7 +99,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void getEachAfterAddToOppositeEndsReturnsCorrectItems() {
+    void getEachAfterAddToOppositeEndsReturnsCorrectElements() {
         Deque<String> deque = createDeque();
         deque.addFirst("a");
         deque.addLast("b");
@@ -117,7 +117,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void removeAfterAddToOppositeEndsReturnsCorrectItem() {
+    void removeAfterAddToOppositeEndsReturnsCorrectElement() {
         Deque<String> deque = createDeque();
         deque.addFirst("a");
         deque.addLast("b");
@@ -135,7 +135,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void removeAfterRemoveAfterAddToOppositeEndsReturnsCorrectItem() {
+    void removeAfterRemoveAfterAddToOppositeEndsReturnsCorrectElement() {
         Deque<String> deque = createDeque();
         deque.addFirst("a");
         deque.addLast("b");
@@ -145,7 +145,7 @@ public abstract class DequeTests {
     }
 
     @Test
-    void getEachAfterAddManyToSameSideReturnsCorrectItems() {
+    void getEachAfterAddManyToSameSideReturnsCorrectElements() {
         int numElements = 20;
         Deque<Integer> deque = createDeque();
         for (int i = 0; i < numElements; i += 1) {

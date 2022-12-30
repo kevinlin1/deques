@@ -5,15 +5,15 @@ package deques;
  *
  * @see Deque
  */
-public class LinkedDeque<T> implements Deque<T> {
+public class LinkedDeque<E> implements Deque<E> {
     /**
      * The sentinel node representing the front of this deque.
      */
-    private final Node<T> front;
+    private final Node<E> front;
     /**
      * The sentinel node representing the back of this deque.
      */
-    private final Node<T> back;
+    private final Node<E> back;
     /**
      * The number of elements in this deque.
      */
@@ -31,21 +31,21 @@ public class LinkedDeque<T> implements Deque<T> {
     }
 
     @Override
-    public void addFirst(T item) {
+    public void addFirst(E element) {
         size += 1;
         // TODO: Replace with your code
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
-    public void addLast(T item) {
+    public void addLast(E element) {
         size += 1;
         // TODO: Replace with your code
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
-    public T removeFirst() {
+    public E removeFirst() {
         if (size == 0) {
             return null;
         }
@@ -55,7 +55,7 @@ public class LinkedDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T removeLast() {
+    public E removeLast() {
         if (size == 0) {
             return null;
         }
@@ -65,11 +65,11 @@ public class LinkedDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T get(int index) {
+    public E get(int index) {
         if ((index >= size) || (index < 0)) {
             return null;
         }
-        Node<T> curr = front.next;
+        Node<E> curr = front.next;
         while (index > 0) {
             curr = curr.next;
             index -= 1;
@@ -99,7 +99,7 @@ public class LinkedDeque<T> implements Deque<T> {
             return message;
         }
         int i = 0;
-        for (Node<T> curr = front.next; curr != back; curr = curr.next) {
+        for (Node<E> curr = front.next; curr != back; curr = curr.next) {
             message = checkNode(curr, i);
             if (message != null) {
                 return message;
@@ -117,7 +117,7 @@ public class LinkedDeque<T> implements Deque<T> {
      * @param i the index of the node in this deque
      * @return null if this node is valid, or a description of the error
      */
-    private String checkNode(Node<T> node, int i) {
+    private String checkNode(Node<E> node, int i) {
         if (node.next == null) {
             return "Unexpected null reference in node at index " + i + ": <" + node + ">";
         } else if (node.next.prev == node) {

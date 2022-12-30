@@ -5,11 +5,11 @@ package deques;
  *
  * @see Deque
  */
-public class ArrayDeque<T> implements Deque<T> {
+public class ArrayDeque<E> implements Deque<E> {
     /**
      * The underlying array of elements stored in this deque.
      */
-    private T[] data;
+    private E[] data;
     /**
      * The index for the next element to be inserted by addFirst.
      */
@@ -28,39 +28,39 @@ public class ArrayDeque<T> implements Deque<T> {
      */
     @SuppressWarnings("unchecked")
     public ArrayDeque() {
-        data = (T[]) new Object[8];
+        data = (E[]) new Object[8];
         front = 0;
         back = 1;
         size = 0;
     }
 
     @Override
-    public void addFirst(T item) {
+    public void addFirst(E element) {
         if (size == data.length) {
             resize(data.length * 2);
         }
-        data[front] = item;
+        data[front] = element;
         front = decrement(front, data.length);
         size += 1;
     }
 
     @Override
-    public void addLast(T item) {
+    public void addLast(E element) {
         if (size == data.length) {
             resize(data.length * 2);
         }
-        data[back] = item;
+        data[back] = element;
         back = increment(back, data.length);
         size += 1;
     }
 
     @Override
-    public T removeFirst() {
+    public E removeFirst() {
         if (size == 0) {
             return null;
         }
         front = increment(front, data.length);
-        T result = data[front];
+        E result = data[front];
         data[front] = null;
         size -= 1;
         if (needsDownsize()) {
@@ -70,12 +70,12 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T removeLast() {
+    public E removeLast() {
         if (size == 0) {
             return null;
         }
         back = decrement(back, data.length);
-        T result = data[back];
+        E result = data[back];
         data[back] = null;
         size -= 1;
         if (needsDownsize()) {
@@ -85,7 +85,7 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T get(int index) {
+    public E get(int index) {
         if ((index >= size) || (index < 0)) {
             return null;
         }
@@ -144,13 +144,13 @@ public class ArrayDeque<T> implements Deque<T> {
 
     /**
      * Updates the length of the underlying element data array to the given capacity, copying over
-     * items as necessary.
+     * elements as necessary.
      *
      * @param capacity the length of the new element data array
      */
     @SuppressWarnings("unchecked")
     private void resize(int capacity) {
-        T[] newData = (T[]) new Object[capacity];
+        E[] newData = (E[]) new Object[capacity];
         int i = increment(front, size);
         for (int newIndex = 0; newIndex < size; newIndex += 1) {
             newData[newIndex] = data[i];
@@ -163,7 +163,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
     /**
      * Returns true if and only if the underlying element data array needs to be downsized. This
-     * helps minimize unused memory when many items are removed from the deque.
+     * helps minimize unused memory when many elements are removed from the deque.
      *
      * @return true if an element data downsize is necessary
      */

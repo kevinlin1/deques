@@ -7,7 +7,7 @@ package deques;
  */
 public class ArrayDequeTests extends DequeTests {
     @Override
-    public <T> Deque<T> createDeque() {
+    public <E> Deque<E> createDeque() {
         return new ArrayDeque<>();
     }
 
