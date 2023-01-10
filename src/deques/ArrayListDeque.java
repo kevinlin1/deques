@@ -32,6 +32,9 @@ public class ArrayListDeque<E> implements Deque<E> {
 
     @Override
     public E get(int index) {
+        if ((index >= list.size()) || (index < 0)) {
+            return null;
+        }
         return list.get(index);
     }
 
@@ -42,11 +45,17 @@ public class ArrayListDeque<E> implements Deque<E> {
 
     @Override
     public E removeFirst() {
+        if (list.size() == 0) {
+            return null;
+        }
         return list.remove(0);
     }
 
     @Override
     public E removeLast() {
+        if (list.size() == 0) {
+            return null;
+        }
         return list.remove(size() - 1);
     }
 }
