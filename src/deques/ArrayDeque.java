@@ -7,6 +7,10 @@ package deques;
  */
 public class ArrayDeque<E> implements Deque<E> {
     /**
+     * The initial capacity for the underlying array of elements.
+     */
+    private static final int INITIAL_CAPACITY = 10;
+    /**
      * The underlying array of elements stored in this deque.
      */
     private E[] data;
@@ -28,7 +32,7 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @SuppressWarnings("unchecked")
     public ArrayDeque() {
-        data = (E[]) new Object[8];
+        data = (E[]) new Object[INITIAL_CAPACITY];
         front = 0;
         back = 1;
         size = 0;
@@ -168,6 +172,6 @@ public class ArrayDeque<E> implements Deque<E> {
      * @return true if an element data downsize is necessary
      */
     private boolean needsDownsize() {
-        return ((double) size) / data.length < 0.25 && data.length >= 16;
+        return ((double) size) / data.length < 0.25 && data.length > INITIAL_CAPACITY;
     }
 }

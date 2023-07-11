@@ -140,15 +140,15 @@ public class LinkedDeque<E> implements Deque<E> {
         /**
          * The element data value.
          */
-        public final T value;
+        final T value;
         /**
          * The previous node in the deque.
          */
-        public Node<T> prev;
+        Node<T> prev;
         /**
          * The next node in the deque.
          */
-        public Node<T> next;
+        Node<T> next;
 
         /**
          * Constructs a new node with the given value.
