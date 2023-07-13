@@ -9,7 +9,7 @@ public class ArrayDeque<E> implements Deque<E> {
     /**
      * The initial capacity for the underlying array of elements.
      */
-    private static final int INITIAL_CAPACITY = 10;
+    private static final int INITIAL_CAPACITY = 8;
     /**
      * The underlying array of elements stored in this deque.
      */
