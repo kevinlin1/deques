@@ -58,4 +58,9 @@ public class ArrayListDeque<E> implements Deque<E> {
         }
         return list.remove(size() - 1);
     }
+
+    @Override
+    public String toString() {
+        return list.toString();
+    }
 }

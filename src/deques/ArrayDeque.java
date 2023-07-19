@@ -98,24 +98,27 @@ public class ArrayDeque<E> implements Deque<E> {
     }
 
     @Override
-    public String toString() {
-        // StringBuilder concatenates strings more efficiently than += in a loop
-        StringBuilder output = new StringBuilder();
-        if (size >= 0) {
-            int counter = 0;
-            int i = increment(front, data.length);
-            while (counter < size) {
-                output.append(data[i]).append(" ");
-                i = increment(i, data.length);
-                counter += 1;
-            }
-        }
-        return output.toString();
+    public int size() {
+        return size;
     }
 
     @Override
-    public int size() {
-        return size;
+    public String toString() {
+        if (size == 0) {
+            return "[]";
+        }
+        StringBuilder result = new StringBuilder();
+        result.append('[');
+        int i = increment(front, data.length);
+        while (i != back) {
+            result.append(data[i]);
+            i = increment(i, data.length);
+            if (i != back) {
+                result.append(", ");
+            }
+        }
+        result.append(']');
+        return result.toString();
     }
 
     /**

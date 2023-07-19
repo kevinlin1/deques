@@ -82,6 +82,25 @@ public class LinkedDeque<E> implements Deque<E> {
         return size;
     }
 
+    @Override
+    public String toString() {
+        if (size == 0) {
+            return "[]";
+        }
+        StringBuilder result = new StringBuilder();
+        result.append('[');
+        Node<E> curr = front.next;
+        while (curr != back) {
+            result.append(curr.value);
+            curr = curr.next;
+            if (curr != back) {
+                result.append(", ");
+            }
+        }
+        result.append(']');
+        return result.toString();
+    }
+
     /**
      * Returns null if the front and back nodes form a valid linked deque. Otherwise, returns a
      * string describing the error.
