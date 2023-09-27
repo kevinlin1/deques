@@ -216,6 +216,42 @@ public abstract class DequeTests {
         assertEquals(1, actual);
     }
 
+    @Test
+    void anotherConfusingTest() {
+        Deque<Integer> deque = createDeque();
+        deque.addFirst(0);
+        assertEquals(0, deque.get(0));
+
+        deque.addLast(1);
+        assertEquals(1, deque.get(1));
+
+        deque.addFirst(-1);
+        deque.addLast(2);
+        assertEquals(2, deque.get(3));
+
+        deque.addLast(3);
+        deque.addLast(4);
+
+        // Test that removing and adding back is okay
+        assertEquals(-1, deque.removeFirst());
+        deque.addFirst(-1);
+        assertEquals(-1, deque.get(0));
+
+        deque.addLast(5);
+        deque.addFirst(-2);
+        deque.addFirst(-3);
+
+        // Test a different tricky sequence of removes
+        assertEquals(5, deque.removeLast());
+        assertEquals(4, deque.removeLast());
+        assertEquals(3, deque.removeLast());
+        assertEquals(2, deque.removeLast());
+        assertEquals(1, deque.removeLast());
+
+        int actual = deque.removeLast();
+        assertEquals(0, actual);
+    }
+
     @Nested
     class RuntimeExperiments {
         /**
